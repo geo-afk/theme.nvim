@@ -8,14 +8,13 @@ function M.setup()
 		vim.cmd("syntax reset")
 	end
 	vim.o.background = "dark"
-	vim.g.colors_name = "custom-1"
+	vim.g.colors_name = "cd-theme"
 
 	local hl = vim.api.nvim_set_hl
 	local link = function(name, target)
 		hl(0, name, { link = target })
 	end
 
-	-- Helper to avoid repetition
 	local function set(name, opts)
 		hl(0, name, opts)
 	end
@@ -27,7 +26,7 @@ function M.setup()
 	set("NormalFloat", { fg = c.ui.text_active, bg = c.ui.float })
 	set("NormalNC", { fg = c.ui.text_inactive, bg = c.ui.base })
 
-	set("CursorLine", { bg = c.none })
+	set("CursorLine", { bg = c.ui.current_line }) -- Subtle highlight restored
 	set("CursorColumn", { bg = c.ui.current_line })
 	set("ColorColumn", { bg = c.ui.current_line })
 	set("CursorLineNr", { fg = c.ui.text_active, bold = true })
@@ -112,19 +111,21 @@ function M.setup()
 	link("@function", "Function")
 	link("@function.builtin", "Special")
 	link("@function.macro", "Macro")
-	link("@parameter", "Identifier")
 	link("@keyword", "Keyword")
 	link("@keyword.function", "Keyword")
 	link("@keyword.return", "Keyword")
 	link("@type", "Type")
 	link("@type.builtin", "Type")
-	link("@variable", "Normal")
-	link("@variable.builtin", "Identifier")
 	link("@constant", "Constant")
 	link("@constant.builtin", "Constant")
-	link("@property", "Identifier")
 	link("@punctuation.delimiter", "Normal")
 	link("@punctuation.bracket", "Normal")
+
+	-- Better variable distinction
+	set("@variable", { fg = c.ui.text_active })
+	set("@variable.builtin", { fg = c.syntax.orange }) -- self, this, etc.
+	set("@parameter", { fg = c.syntax.text, italic = true })
+	set("@property", { fg = c.syntax.cyan })
 
 	set("@constructor", { fg = c.syntax.cyan })
 	set("@text.title", { fg = c.ui.accent, bold = true })
@@ -151,12 +152,12 @@ function M.setup()
 	set("LspInlayHint", { fg = c.syntax.comment })
 
 	-- ===========================
-	-- Plugin-specific highlights
+	-- Plugin-specific
 	-- ===========================
 	-- GitSigns
-	set("GitSignsAdd", { fg = c.ui.green, bg = c.ui.base })
-	set("GitSignsChange", { fg = c.ui.blue, bg = c.ui.base })
-	set("GitSignsDelete", { fg = c.ui.red, bg = c.ui.base })
+	set("GitSignsAdd", { fg = c.ui.green })
+	set("GitSignsChange", { fg = c.ui.blue })
+	set("GitSignsDelete", { fg = c.ui.red })
 
 	-- Telescope
 	set("TelescopeBorder", { fg = c.ui.border, bg = c.ui.float })
@@ -183,13 +184,16 @@ function M.setup()
 	set("IblIndent", { fg = c.ui.none_text, nocombine = true })
 	set("IblScope", { fg = c.ui.border, nocombine = true })
 
-	-- Rainbow Delimiters
-	set("RainbowDelimiterRed", { fg = c.ui.red })
-	set("RainbowDelimiterYellow", { fg = c.ui.yellow })
-	set("RainbowDelimiterBlue", { fg = c.ui.blue })
-	-- (adjust names if you're using rainbow-delimiters.nvim – newer versions use RainbowDelimiter1 etc.)
+	-- Rainbow Delimiters (modern names)
+	set("RainbowDelimiter1", { fg = c.ui.red })
+	set("RainbowDelimiter2", { fg = c.ui.orange })
+	set("RainbowDelimiter3", { fg = c.ui.yellow })
+	set("RainbowDelimiter4", { fg = c.ui.green })
+	set("RainbowDelimiter5", { fg = c.ui.cyan })
+	set("RainbowDelimiter6", { fg = c.ui.blue })
+	set("RainbowDelimiter7", { fg = c.ui.purple })
 
-	-- Terminal colors
+	-- Terminal
 	vim.g.terminal_color_0 = c.ui.base
 	vim.g.terminal_color_1 = c.ui.red
 	vim.g.terminal_color_2 = c.ui.green
