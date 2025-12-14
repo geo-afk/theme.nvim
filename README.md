@@ -1,6 +1,6 @@
 ![theme preview](./theme-preview.png)  
 
-**custom-1** is a modern, dark, low-contrast Neovim colorscheme with carefully chosen syntax highlighting and extensive plugin support. It emphasizes readability, subtle UI accents, and a clean aesthetic suitable for long coding sessions.
+**theme** is a modern, dark, low-contrast Neovim colorscheme with carefully chosen syntax highlighting and extensive plugin support. It emphasizes readability, subtle UI accents, and a clean aesthetic suitable for long coding sessions.
 
 ## Features
 
@@ -164,4 +164,4 @@ MIT License
 
 ---
 
-Enjoy coding with **custom-1**! 🚀
+Enjoy coding with **theme**! 🚀
