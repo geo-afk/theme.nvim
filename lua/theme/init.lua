@@ -173,7 +173,7 @@ function M.setup()
 	set("NvimTreeGitNew", { fg = c.ui.green })
 	set("NvimTreeGitDeleted", { fg = c.ui.red })
 
-	-- nvim-cmp
+	-- blink-cmp
 	set("CmpItemAbbrMatch", { fg = c.ui.accent, bold = true })
 	set("CmpItemKindFunction", { fg = c.syntax.blue })
 	set("CmpItemKindMethod", { fg = c.syntax.blue })
@@ -210,6 +210,13 @@ function M.setup()
 	vim.g.terminal_color_13 = c.syntax.purple
 	vim.g.terminal_color_14 = c.syntax.cyan
 	vim.g.terminal_color_15 = c.ui.text_active
+
+	-- Import and apply blink-cmp highlights from blink.lua
+	local blink_highlights = require("theme.blink") -- adjust path if needed, e.g. "theme.blink" or "blink"
+
+	for group, opts in pairs(blink_highlights) do
+		hl(0, group, opts)
+	end
 end
 
 return M
