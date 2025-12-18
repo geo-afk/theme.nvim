@@ -1,7 +1,7 @@
 local M = {}
 
 local c = require("theme.colors")
-
+local blink_highlights = require("theme.blink")
 function M.setup()
 	vim.cmd("highlight clear")
 	if vim.fn.exists("syntax_on") then
@@ -210,9 +210,6 @@ function M.setup()
 	vim.g.terminal_color_13 = c.syntax.purple
 	vim.g.terminal_color_14 = c.syntax.cyan
 	vim.g.terminal_color_15 = c.ui.text_active
-
-	-- Import and apply blink-cmp highlights from blink.lua
-	local blink_highlights = require("theme.blink") -- adjust path if needed, e.g. "theme.blink" or "blink"
 
 	for group, opts in pairs(blink_highlights) do
 		hl(0, group, opts)
