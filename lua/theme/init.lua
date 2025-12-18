@@ -2,6 +2,12 @@ local M = {}
 
 local c = require("theme.colors")
 local blink_highlights = require("theme.blink")
+local lsp_highlights = require("theme.lsp")
+local rainbow_highlights = require("theme.rainbowdelimiters")
+local telescope_highlights = require("theme.telescope")
+local ts_highlights = require("theme.treesitter")
+local whichkey_highlights = require("theme.whichkey")
+
 function M.setup()
 	vim.cmd("highlight clear")
 	if vim.fn.exists("syntax_on") then
@@ -11,9 +17,9 @@ function M.setup()
 	vim.g.colors_name = "cd-theme"
 
 	local hl = vim.api.nvim_set_hl
-	local link = function(name, target)
-		hl(0, name, { link = target })
-	end
+	-- local link = function(name, target)
+	-- 	hl(0, name, { link = target })
+	-- end
 
 	local function set(name, opts)
 		hl(0, name, opts)
@@ -101,35 +107,22 @@ function M.setup()
 	set("Error", { fg = c.ui.red, bold = true })
 	set("Todo", { fg = c.syntax.yellow, bold = true })
 
-	-- ===========================
-	-- Treesitter
-	-- ===========================
-	link("@comment", "Comment")
-	link("@string", "String")
-	link("@string.regex", "Special")
-	link("@string.escape", "Special")
-	link("@function", "Function")
-	link("@function.builtin", "Special")
-	link("@function.macro", "Macro")
-	link("@keyword", "Keyword")
-	link("@keyword.function", "Keyword")
-	link("@keyword.return", "Keyword")
-	link("@type", "Type")
-	link("@type.builtin", "Type")
-	link("@constant", "Constant")
-	link("@constant.builtin", "Constant")
-	link("@punctuation.delimiter", "Normal")
-	link("@punctuation.bracket", "Normal")
-
-	-- Better variable distinction
-	set("@variable", { fg = c.ui.text_active })
-	set("@variable.builtin", { fg = c.syntax.orange }) -- self, this, etc.
-	set("@parameter", { fg = c.syntax.text, italic = true })
-	set("@property", { fg = c.syntax.cyan })
-
-	set("@constructor", { fg = c.syntax.cyan })
-	set("@text.title", { fg = c.ui.accent, bold = true })
-	set("@text.uri", { fg = c.ui.blue, underline = true })
+	-- link("@comment", "Comment")
+	-- link("@string", "String")
+	-- link("@string.regex", "Special")
+	-- link("@string.escape", "Special")
+	-- link("@function", "Function")
+	-- link("@function.builtin", "Special")
+	-- link("@function.macro", "Macro")
+	-- link("@keyword", "Keyword")
+	-- link("@keyword.function", "Keyword")
+	-- link("@keyword.return", "Keyword")
+	-- link("@type", "Type")
+	-- link("@type.builtin", "Type")
+	-- link("@constant", "Constant")
+	-- link("@constant.builtin", "Constant")
+	-- link("@punctuation.delimiter", "Normal")
+	-- link("@punctuation.bracket", "Normal")
 
 	-- ===========================
 	-- LSP / Diagnostics
@@ -159,12 +152,6 @@ function M.setup()
 	set("GitSignsChange", { fg = c.ui.blue })
 	set("GitSignsDelete", { fg = c.ui.red })
 
-	-- Telescope
-	set("TelescopeBorder", { fg = c.ui.border, bg = c.ui.float })
-	set("TelescopeNormal", { bg = c.ui.float })
-	set("TelescopeSelection", { fg = c.ui.text_active, bg = c.ui.menu_selection })
-	set("TelescopeMatching", { fg = c.ui.accent, bold = true })
-
 	-- NvimTree
 	set("NvimTreeNormal", { bg = c.ui.float })
 	set("NvimTreeRootFolder", { fg = c.ui.accent, bold = true })
@@ -173,25 +160,9 @@ function M.setup()
 	set("NvimTreeGitNew", { fg = c.ui.green })
 	set("NvimTreeGitDeleted", { fg = c.ui.red })
 
-	-- blink-cmp
-	set("CmpItemAbbrMatch", { fg = c.ui.accent, bold = true })
-	set("CmpItemKindFunction", { fg = c.syntax.blue })
-	set("CmpItemKindMethod", { fg = c.syntax.blue })
-	set("CmpItemKindVariable", { fg = c.syntax.red })
-	set("CmpItemKindKeyword", { fg = c.syntax.purple })
-
 	-- indent-blankline
 	set("IblIndent", { fg = c.ui.none_text, nocombine = true })
 	set("IblScope", { fg = c.ui.border, nocombine = true })
-
-	-- Rainbow Delimiters (modern names)
-	set("RainbowDelimiter1", { fg = c.ui.red })
-	set("RainbowDelimiter2", { fg = c.ui.orange })
-	set("RainbowDelimiter3", { fg = c.ui.yellow })
-	set("RainbowDelimiter4", { fg = c.ui.green })
-	set("RainbowDelimiter5", { fg = c.ui.cyan })
-	set("RainbowDelimiter6", { fg = c.ui.blue })
-	set("RainbowDelimiter7", { fg = c.ui.purple })
 
 	-- Terminal
 	vim.g.terminal_color_0 = c.ui.base
@@ -212,6 +183,25 @@ function M.setup()
 	vim.g.terminal_color_15 = c.ui.text_active
 
 	for group, opts in pairs(blink_highlights) do
+		hl(0, group, opts)
+	end
+
+	for group, opts in pairs(lsp_highlights) do
+		hl(0, group, opts)
+	end
+
+	for group, opts in pairs(rainbow_highlights) do
+		hl(0, group, opts)
+	end
+
+	for group, opts in pairs(telescope_highlights) do
+		hl(0, group, opts)
+	end
+
+	for group, opts in pairs(ts_highlights) do
+		hl(0, group, opts)
+	end
+	for group, opts in pairs(whichkey_highlights) do
 		hl(0, group, opts)
 	end
 end
