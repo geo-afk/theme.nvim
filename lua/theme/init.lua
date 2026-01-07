@@ -85,6 +85,7 @@ function M.setup()
 	-- Syntax (legacy)
 	-- ===========================
 	set("Comment", { fg = c.syntax.comment, italic = true })
+	set("goFormatSpecifier", { fg = c.ui.text_active, italic = true, link = "Variable" })
 
 	set("Constant", { fg = c.syntax.orange })
 	set("String", { fg = c.syntax.green })
