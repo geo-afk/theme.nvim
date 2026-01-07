@@ -1,6 +1,11 @@
 local c = require("theme.colors")
 
 return {
+	-- String escape sequences and format specifiers
+	["@string.escape"] = { fg = c.ui.text_active }, -- or link = "@variable"
+	["@string.special"] = { fg = c.ui.text_active },
+	["@string.special.symbol"] = { fg = c.ui.text_active },
+
 	-- Variables
 	["@variable"] = { fg = c.ui.text_active },
 	["@variable.builtin"] = { fg = c.syntax.orange }, -- self, this, etc.
@@ -19,7 +24,6 @@ return {
 	-- Strings
 	["@string"] = { fg = c.syntax.green },
 	["@string.regex"] = { fg = c.syntax.yellow },
-	["@string.escape"] = { fg = c.syntax.yellow },
 
 	-- Numbers / Characters
 	["@number"] = { fg = c.syntax.orange },
