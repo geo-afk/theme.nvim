@@ -1,11 +1,20 @@
-local c = require("theme.colors")
+local c = require("theme.c")
 
 local highlights = {
+	-- Completion menu
 	BlinkCmpMenu = { bg = c.ui.float },
 	BlinkCmpMenuBorder = { fg = c.ui.border, bg = c.ui.float },
-	BlinkCmpMenuSelection = { fg = c.ui.text_active, bg = c.ui.menu_selection, bold = true },
+	BlinkCmpMenuSelection = {
+		fg = c.ui.text_active,
+		bg = c.ui.menu_selection,
+		bold = true,
+	},
+
+	-- Scrollbar
 	BlinkCmpScrollBarThumb = { bg = c.ui.accent },
 	BlinkCmpScrollBarGutter = { bg = c.ui.highlight },
+
+	-- Labels
 	BlinkCmpLabel = { fg = c.ui.text_active },
 	BlinkCmpLabelDeprecated = { fg = c.ui.red, strikethrough = true },
 	BlinkCmpLabelMatch = { fg = c.ui.accent, bold = true },
@@ -13,13 +22,20 @@ local highlights = {
 	BlinkCmpLabelDescription = { fg = c.ui.text_inactive },
 	BlinkCmpSource = { fg = c.syntax.comment },
 	BlinkCmpGhostText = { fg = c.syntax.comment },
+
+	-- Documentation
 	BlinkCmpDoc = { bg = c.ui.float },
 	BlinkCmpDocBorder = { fg = c.ui.border, bg = c.ui.float },
 	BlinkCmpDocSeparator = { fg = c.ui.none_text },
 	BlinkCmpDocCursorLine = { bg = c.ui.current_line },
+
+	-- Signature help
 	BlinkCmpSignatureHelp = { bg = c.ui.float },
 	BlinkCmpSignatureHelpBorder = { fg = c.ui.border, bg = c.ui.float },
-	BlinkCmpSignatureHelpActiveParameter = { fg = c.ui.blue, bold = true },
+	BlinkCmpSignatureHelpActiveParameter = {
+		fg = c.ui.blue,
+		bold = true,
+	},
 }
 
 -- Kind highlights
