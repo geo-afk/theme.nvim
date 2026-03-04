@@ -1,6 +1,6 @@
-local c = require("theme.c")
+local c = require("theme.colors")
 
-local highlights = {
+ocal highlights = {
 	-- Completion menu
 	BlinkCmpMenu = { bg = c.ui.float },
 	BlinkCmpMenuBorder = { fg = c.ui.border, bg = c.ui.float },
